@@ -30,6 +30,11 @@ function drawFood() {
     context.fillRect(food.x, food.y, box, box);
 }
 
+function score() {
+    let score = document.querySelector('#score');
+    score.innerHTML = snake.length * 100;
+}
+
 document,addEventListener('keydown', update);
 
 function update (event) {
@@ -66,6 +71,7 @@ function gameStart(){
 
     if(snakeX != food.x || snakeY != food.y) {
         snake.pop();
+        score();
     }
     else {
         food.x = Math.floor(Math.random() * 15 + 1) * box;
@@ -84,3 +90,4 @@ let game = setInterval(gameStart, 100);
 
 createBG();
 createSnake();
+score();
